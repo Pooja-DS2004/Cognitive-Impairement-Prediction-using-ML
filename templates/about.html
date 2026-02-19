@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Dementia Detection AI</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      padding: 80px 12%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00ffe7;
+      font-size: 38px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      color: #ffffff;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #cccccc;
+      margin-bottom: 35px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+
+    ul li {
+      margin: 15px 0;
+      font-size: 17px;
+      background: #1a1a1a;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 255, 231, 0.1);
+    }
+
+    .btn {
+      background-color: #00ffe7;
+      color: #000000;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      background-color: #0ff;
+      transform: scale(1.05);
+    }
+
+    .image-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .image-container img {
+      width: 300px;
+      height: 200px;
+      border-radius: 15px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.2);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.07);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 5%;
+      }
+
+      .image-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dementia Detection AI</h1>
+
+    <p>
+      🧠 Welcome to the future of medical diagnostics. Our AI system leverages deep learning models trained on MRI scans to detect early signs of <strong>dementia</strong> with high accuracy. Built to assist healthcare professionals and researchers in making informed decisions.
+    </p>
+
+    <h2>💡 What Makes This Project Stand Out?</h2>
+    <ul>
+      <li>🧠 <strong>AI-Powered MRI Analysis</strong> – Automatically analyzes brain scans to predict whether a subject is <em>Normal</em> or <em>Affected</em> by dementia.</li>
+      <li>⚡ <strong>Fast & Accurate</strong> – Upload your MRI image and get instant prediction results using state-of-the-art CNN models.</li>
+      <li>🔒 <strong>Privacy First</strong> – Runs locally without sending sensitive medical data to third parties.</li>
+      <li>📚 <strong>Educational & Clinical Use</strong> – Designed for medical institutions, students, and early-stage clinical screenings.</li>
+    </ul>
+
+    <p>
+      ⚕️ Merging artificial intelligence with neuroscience, this system empowers early detection and diagnosis, helping pave the way for better care and patient outcomes.
+    </p>
+
+    <button class="btn" onclick="window.location.href='/'">Back</button>
+
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='image/brain1.jpg') }}" alt="MRI 1" />
+      <img src="{{ url_for('static', filename='image/brain2.jpg') }}" alt="MRI 2" />
+      <img src="{{ url_for('static', filename='image/brain3.webp') }}" alt="MRI 3" />
+    </div>
+  </div>
+</body>
+</html>

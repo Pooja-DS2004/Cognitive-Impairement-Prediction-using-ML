@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Dementia Detection</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
+
+    <style>
+        /* Root colors */
+        :root {
+            --primary: #ff8c00;
+            --primary-dark: #e67300;
+            --accent: #ffd700;
+            --dark-bg: #121212;
+            --dark-bg-alt: #1f1f1f;
+            --light-text: #f8f8f8;
+            --error-color: #ff4c4c;
+            --success-color: #4caf50;
+        }
+
+        /* Reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo i {
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary);
+            color: var(--dark-bg);
+        }
+
+        /* Container for form + image */
+        .container {
+            display: flex;
+            min-height: 100vh;
+            padding: 6rem 5%;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            background: #121212;
+            margin-top: 60px; /* height of navbar */
+        }
+
+        /* Form section */
+        .form-section {
+            flex: 1;
+            max-width: 450px;
+            background: var(--dark-bg-alt);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.15);
+        }
+
+        .form-section h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            padding: 0.85rem 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: #2c2c2c;
+            color: var(--light-text);
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            box-shadow: 0 0 8px var(--primary);
+            background: #3d3d3d;
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary);
+            color: var(--dark-bg);
+            border: none;
+            padding: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.6);
+        }
+
+        p {
+            margin-top: 1.3rem;
+            font-size: 0.9rem;
+            color: #ddd;
+            text-align: center;
+        }
+
+        p a {
+            font-weight: 600;
+        }
+
+        /* Flash messages */
+        p.error {
+            background-color: var(--error-color);
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        p.success {
+            background-color: var(--success-color);
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Image section */
+        .image-section {
+            flex: 1;
+            background: url('{{ url_for("static", filename="image/4.jpg") }}') no-repeat center center;
+            background-size: cover;
+            border-radius: 15px;
+            min-height: 420px;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                padding: 3rem 5%;
+            }
+
+            .image-section {
+                width: 100%;
+                min-height: 250px;
+                margin-top: 2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <i class="fas fa-hard-hat"></i>Dementia Detection
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Login</h2>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endwith %}
+                <form method="POST">
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="password" name="password" placeholder="Password" required />
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+            </div>
+        </div>
+        <div class="image-section"></div>
+    </div>
+</body>
+</html>
