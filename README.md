@@ -22,7 +22,7 @@ _Installation & Setup_
 1. Prerequisites
 Ensure you have Python 3.8+ installed.
 2. Clone the Repository
-3. git clone https://github.com/Pooja-DS2004/cognitive-prediction-ml.git
+3. git clone https://github.com/Pooja-DS2004/Cognitive-Impairement-Prediction-using-ML.git
 cd cognitive-prediction-ml
 3. Install Dependencies
    pip install -r requirements.txt
